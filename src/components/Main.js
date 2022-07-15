@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
 const Main = () => {
   return (
-    <div>Soy el cuerpo Principal</div>
-  )
+    <Fragment>
+    <h2>  Soy el cuerpo Principal</h2>
+    </Fragment>
+  );
 }
 
-export default Main
+export default Main;
