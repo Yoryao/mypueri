@@ -7,15 +7,14 @@ import React from 'react';
 
 function App() {
   return (
-  <div>
-    {/* <Header></Header>
-    <Main></Main>
-    <FormularioContacto></FormularioContacto>
-    <Footer></Footer> */}
-    <Controlado></Controlado>
-    
-    
-  </div>)
+      <>
+          {/* <Header></Header>
+          <Main></Main> */}
+          <FormularioContacto/>
+          {/* <Footer></Footer>
+          <Controlado></Controlado> */}
+      </>
+  )
 }
 
 export default App;

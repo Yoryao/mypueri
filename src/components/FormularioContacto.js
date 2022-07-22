@@ -1,55 +1,92 @@
-import React from "react";
-import { useRef } from "react";
+import React, { useEffect, useState } from "react";
 
 const FormularioContacto = () => {
+  const initialState = {
+    nombre: "",
+    bebe: "",
+    edad: "",
+    telefono: "",
+    mail: "",
+  };
 
-        const formulario = useRef(null);
+  const [consulta, setConsulta] = useState(initialState);
+  const [pendientes, setPendientes] = useState([]);
 
-        const handleSubmit= e =>{
-            e.preventDefault();
-            console.log("procesando...")
+  const { nombre, bebe, edad, telefono, mail } = consulta;
 
-            const datos = new FormData(formulario.current)
+  useEffect(() => {
+    sessionStorage.setItem("consultas", JSON.stringify(pendientes))
+  
+  }, [pendientes])
+  
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-            const objetoDatos = Object.fromEntries([...datos.entries()]);
+    setPendientes([...pendientes, consulta]);
 
-            const { nombre ,  apellido, bebe, servicio} = objetoDatos;
-            console.log("Tu nombre:" + nombre)
-            console.log("Tu apellido:" + apellido)
-            console.log("Tu bebe:" + bebe)
-            console.log("Tu servicio:" + servicio)
+    setConsulta(initialState);
+  };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
+    setConsulta((old) => ({
+      ...old,
+      [name]: value,
+    }));
+  };
 
-
-            
-        }
-        
-    
   return (
     <>
-        <h1>Formulario de Contacto</h1>
-        
-        <form id="formulario" ref={formulario} onSubmit={handleSubmit}>
+      <h1>Formulario de Contacto</h1>
 
-            <input type="text" className="form-control width:50px mb-2 m-8" placeholder="Ingresa Tu Nombre" name="nombre" />
-            <input type="text" className="form-control width:50px mb-2 m-8" placeholder="Ingresa Tu Apellido" name="apellido" />
-            <input type="text" className="form-control width:50px mb-2 m-8" placeholder="Ingresa El nombre de tu bebe" name="bebe" />
-{/*             
-            <input type="text" className="form-control width:50px mb-2 m-8" placeholder="Ingresa su fecha de nacimiento" name="nacimiento"/> */}
-            <select className="form-control mn-10" 
-                    name="serviciossss" 
-                    defaultValue="DEFAULTI">
-                <option value="lactancia">Lactancia</option>
-                <option value="prenatal">PreNatal</option>
-            </select>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          className="form-control mb-2"
+          placeholder="Ingresa Tu Nombre"
+          name="nombre"
+          value={nombre}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          className="form-control mb-2 "
+          placeholder="Ingresa el nombre de tu bebe"
+          name="bebe"
+          value={bebe}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          className="form-control mb-2 m-8"
+          placeholder="Ingresa la edad de tu bebe"
+          name="edad"
+          value={edad}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          className="form-control width:50px mb-2 m-8"
+          placeholder="Ingresa tu telefono"
+          name="telefono"
+          value={telefono}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          className="form-control width:50px mb-2 m-8"
+          placeholder="Ingresa tu mail"
+          name="mail"
+          value={mail}
+          onChange={handleChange}
+        />
 
-            <button type="submit" className="btn btn-danger">Enviar</button>
-
-            
-        </form>
-
-       
+        <button type="submit" className="btn btn-danger">
+          Enviar
+        </button>
+      </form>
     </>
   );
 };
