@@ -9,6 +9,7 @@ import Contacto from "./routes/Contacto";
 import Formacion from "./routes/Formacion";
 import Inicio from "./routes/Inicio";
 import NoEncontrada from "./routes/NoEncontrada"
+import Post from "./routes/Post";
 import React from "react";
 import ReactDOM from "react-dom/client";
 
@@ -22,6 +23,7 @@ root.render(
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/formacion" element={<Formacion />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<Post />} />
           <Route path="*" element={<NoEncontrada />} />
       </Route>
     </Routes>
