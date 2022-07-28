@@ -16,16 +16,15 @@ import ReactDOM from "react-dom/client";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />}> 
-          
-          <Route index element={<Inicio />} />
-          <Route path="/contacto" element={<Contacto />} />
-          <Route path="/formacion" element={<Formacion />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:id" element={<Post />} />
-          <Route path="*" element={<NoEncontrada />} />
-      </Route>
-    </Routes>
+      <Routes>
+          <Route path="/" element={<App />}> 
+              <Route index element={<Inicio />} />
+              <Route path="/contacto" element={<Contacto />} />
+              <Route path="/formacion" element={<Formacion />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:id" element={<Post />} />
+              <Route path="*" element={<NoEncontrada />} />
+          </Route>
+      </Routes>
   </BrowserRouter>
 );

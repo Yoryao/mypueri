@@ -5,7 +5,7 @@ const NoEncontrada = () => {
   return (
     <>
         <h1>404</h1>
-        <Link to="/" className="btn btn-dark">Inicio</Link>
+        <Link to="/" className="btn btn-success">VOLVER</Link>
     </>
   )
 };
